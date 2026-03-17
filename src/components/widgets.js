@@ -24,35 +24,35 @@ const Widgets = () => {
                         <div className='w-full flex flex-row p-5 gap-5 items-center bg-black-100 rounded-2xl'>
                             <div><h1 className='text-7xl font-bold mr-10 bg-red-100 p-5 rounded-2xl px-8'>S</h1></div>
                             <div>
-                                <Image src="/portfolio/images/rust-logo.svg" width={80} height={80} alt="Rust logo" className='rust-logo'></Image>
+                                <Image src="/images/rust-logo.svg" width={80} height={80} alt="Rust logo" className='rust-logo'></Image>
                             </div>
                             <div>
-                                <Image src="/portfolio/images/cpp-logo.svg" width={80} height={80} alt="C++ logo"></Image>
+                                <Image src="/images/cpp-logo.svg" width={80} height={80} alt="C++ logo"></Image>
                             </div>
                         </div>
                         <div className='flex flex-row p-5 gap-5 items-center bg-black-100 rounded-2xl
                         lg:w-5/6'>
                             <div><h1 className='text-3xl font-bold mr-10 bg-orange-300 p-5 rounded-2xl px-8'>A</h1></div>
                             <div className='flex flex-col gap-2'>
-                                <Image src="/portfolio/images/html-logo.svg" width="60" height="60" alt="HTML logo"></Image>
+                                <Image src="/images/html-logo.svg" width="60" height="60" alt="HTML logo"></Image>
 
-                                <Image src="/portfolio/images/css-logo.svg" width="60" height="60" alt="CSS logo"></Image>
+                                <Image src="/images/css-logo.svg" width="60" height="60" alt="CSS logo"></Image>
                             </div>
                             <div>
-                                <Image src="/portfolio/images/js-logo.svg" width="60" height="60" alt="JS logo"></Image>
+                                <Image src="/images/js-logo.svg" width="60" height="60" alt="JS logo"></Image>
                             </div>
                         </div>
                         <div className='flex flex-row p-5 gap-5 items-center bg-black-100 rounded-2xl
                         lg:w-5/6'>
                             <div><h1 className='text-3xl font-bold mr-10 bg-orange-400 p-5 rounded-2xl px-8'>B</h1></div>
                             <div>
-                                <Image src="/portfolio/images/csharp-logo.svg" width="50" height="50" alt="C# logo"></Image>
+                                <Image src="/images/csharp-logo.svg" width="50" height="50" alt="C# logo"></Image>
                             </div>
                             <div>
-                                <Image src="/portfolio/images/python-logo.svg" width={50} height={50} alt="Python logo"></Image>
+                                <Image src="/images/python-logo.svg" width={50} height={50} alt="Python logo"></Image>
                             </div>
                             <div>
-                                <Image src="/portfolio/images/react-logo.svg" width={50} height={50} alt="Python logo"></Image>
+                                <Image src="/images/react-logo.svg" width={50} height={50} alt="Python logo"></Image>
                             </div>
                         </div>
 
@@ -73,13 +73,13 @@ const Widgets = () => {
                 <div className='items-end mt-auto'>
                     <p>written in <span className='font-bold'>Rust</span> with winit and wgpu. written mostly as a Rust-learning-project. trying to implement cool modular features in a simple fashion.</p>
                 </div>
-                <a href='https://github.com/pledp/moegl'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/portfolio/images/github-logo-white.svg" width="50" height="50" alt="Github logo"></Image></a>
+                <a href='https://github.com/pledp/moegl'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/images/github-logo-white.svg" width="50" height="50" alt="Github logo"></Image></a>
             </Project>
 
             <FadeInSection className='h-2 bg-white w-1/2 mx-auto rounded-2xl fade-delay m-10'></FadeInSection>
 
             <FadeInSection className='fade-delay'> <h1 className='text-3xl font-bold'>other stuff i've done</h1> </FadeInSection>
-        
+
             <div className='flex flex-col w-full gap-6'>
                 <div className='flex flex-col gap-6
                 sm:flex-row'>
@@ -87,7 +87,7 @@ const Widgets = () => {
                         <div className='flex flex-col gap-5'>
                             <div className='flex flex-row items-center'>
                                 <h1 className='font-bold text-6xl'>smeagl</h1>
-                                <a className='w-14 ml-auto' href='https://github.com/pledp/pledGL'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/portfolio/images/github-logo-white.svg" width="50" height="50" alt="Github logo"></Image></a>
+                                <a className='w-14 ml-auto' href='https://github.com/pledp/pledGL'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/images/github-logo-white.svg" width="50" height="50" alt="Github logo"></Image></a>
                             </div>
                             <p>a (very) minimal game framework written in <span className='font-bold'>C++</span>.</p>
                         </div>
@@ -95,12 +95,12 @@ const Widgets = () => {
                         <p>i now understand the pain of CMake and build systems and such</p>
 
                     </Project>
-                    
+
                     <Project className='rounded-2xl bg-white text-black move-on-hover h-full'>
                         <div className='p-6 flex flex-col gap-8'>
                             <div className='flex flex-row gap-5 w-full'>
                                 <div className="flex-row flex gap-6 w-full items-center">
-                                    <a className="w-14" href='https://github.com/pledp/pLdev'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/portfolio/images/github-logo.svg" width="50" height="50" alt="Github logo"></Image></a>
+                                    <a className="w-14" href='https://github.com/pledp/pLdev'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/images/github-logo.svg" width="50" height="50" alt="Github logo"></Image></a>
                                     <h1 className='font-bold text-6xl ml-auto'>robot.r</h1>
                                 </div>
                             </div>
@@ -118,8 +118,8 @@ const Widgets = () => {
                                 </ul>
                                 <p>earlier project, gameplay doesn't offer much variance. (just don't read the source code...)</p>
                                 <LightBox slides={[
-                                    { src: "/portfolio/images/robotr-1.png" }, 
-                                    { src: "/portfolio/images/robotr-2.png" }
+                                    { src: "/images/robotr-1.png" },
+                                    { src: "/images/robotr-2.png" }
                                 ]}/>
                             </div>
                         </Expandable>
@@ -131,7 +131,7 @@ const Widgets = () => {
                         <div className='flex flex-col gap-5'>
                             <div className='flex flex-row gap-8'>
                                 <h1 className='font-bold text-5xl'>Clawmarks</h1>
-                                <a className="w-14 ml-auto" href='https://github.com/pledp/clawmarks'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/portfolio/images/github-logo.svg" width="50" height="50" alt="Github logo"></Image></a>
+                                <a className="w-14 ml-auto" href='https://github.com/pledp/clawmarks'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/images/github-logo.svg" width="50" height="50" alt="Github logo"></Image></a>
                             </div>
                             <p>1st year uni project, a <span className='font-bold'>web-based puzzle game</span>.</p>
                         </div>
@@ -149,8 +149,8 @@ const Widgets = () => {
                             </ul>
                             <p>occasionally events, which you have to deal with, appear, such as a fire or a crash on the airport.</p>
                             <LightBox slides={[
-                                { src: "/portfolio/images/clawmarks-1.png" }, 
-                                { src: "/portfolio/images/clawmarks-2.png" }
+                                { src: "/images/clawmarks-1.png" },
+                                { src: "/images/clawmarks-2.png" }
                             ]}/>
                         </div>
                     </Expandable>
@@ -159,7 +159,7 @@ const Widgets = () => {
             </div>
 
             <FadeInSection className='h-2 bg-white w-1/2 mx-auto rounded-2xl fade-delay m-10'></FadeInSection>
-            
+
             <FadeInSection className='fade-delay'> <h1 className='text-3xl font-bold'>contact me</h1> </FadeInSection>
             <FadeInSection className='flex flex-col bg-white text-black p-5 rounded-2xl gap-10'>
                 <div className='flex flex-col'>
@@ -168,7 +168,7 @@ const Widgets = () => {
                 </div>
                 <div className='flex flex-col'>
                     <h1 className='text-xl'>social</h1>
-                    <a href='https://github.com/pledp'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/portfolio/images/github-logo.svg" width="50" height="50" alt="Github logo"></Image></a>
+                    <a href='https://github.com/pledp'><Image className="transition-transform duration-300 ease-in-out hover:scale-110" src="/images/github-logo.svg" width="50" height="50" alt="Github logo"></Image></a>
                 </div>
             </FadeInSection>
         </section>

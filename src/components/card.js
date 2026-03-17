@@ -8,7 +8,7 @@ const Card = () => {
         lg:max-w-96 lg:sticky lg:top-10">
             <div className="bg-black p-5 rounded-2xl text-white">
                 <div className="h-1/2 mx-10 my-5 items-center rounded-2xl flex">
-                    <Image src={'/portfolio/images/signature.png'} alt="Signature" width="256" height="256" className='mx-auto'></Image>
+                    <Image src={'/images/signature.png'} alt="Signature" width="256" height="256" className='mx-auto'></Image>
                 </div>
 
                 {/* Bottom Half - Content */}

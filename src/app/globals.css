@@ -52,16 +52,16 @@ Image {
 
 .pattern-wave {
   background-size: auto;
-  background-image: url("/portfolio/patterns/pattern-wave.svg");
+  background-image: url("/patterns/pattern-wave.svg");
 }
 
 .pattern-doodle {
   background-size: 100% 100%;
-  background-image: url("/portfolio/patterns/pattern-doodle.svg");
+  background-image: url("/patterns/pattern-doodle.svg");
 }
 
 .pattern-tri {
-  background-image: url("/portfolio/patterns/pattern-tri.svg");
+  background-image: url("/patterns/pattern-tri.svg");
   background-repeat: repeat-x;
 }
 
