@@ -1,31 +1,70 @@
-"use client"
+"use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import Lightbox from 'yet-another-react-lightbox';
-import "yet-another-react-lightbox/styles.css"
 
-export default function Expandable({ title, children, className = '' }) {
-  const [isOpen, setIsOpen] = useState(false);
-  
+/**
+ * Expandable component with:
+ * - 50px peek view when collapsed
+ * - animated Tailwind gradient fade transition
+ * - configurable Tailwind color input
+ * - smooth Framer Motion height animation
+ */
+
+export default function Expandable({
+  title,
+  children,
+  className = "",
+  buttonBg = "",
+  gradientTo = "white", // Tailwind color (e.g. white, gray-900)
+  defaultOpen = false,
+}) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  const toggle = () => {
+    setIsOpen((v) => !v);
+  };
+
   return (
-    <div>
-      <div className={`relative transition-[max-height] duration-300 overflow-hidden delay-0 rounded-r-xl rounded-b-xl ${isOpen ? "max-h-screen" : "max-h-20"}`}>
-        <div className="px-6">{children}</div>
-        <div className={`absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent ${className} ${isOpen ? "hidden" : "inline"}`}></div>
+    <div className={`w-full overflow-hidden ${className}`}>
+      {/* Content wrapper */}
+      <div className="relative">
+        <motion.div
+          animate={{
+            height: isOpen ? "auto" : 70,
+          }}
+          initial={false}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
+          <div>{children}</div>
+        </motion.div>
+
+        {/* Tailwind gradient fade overlay */}
+        <div
+          className={`
+            absolute bottom-0 left-0 w-full h-16
+            bg-gradient-to-b from-transparent to-green-100
+            transition-opacity duration-500
+            ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}
+          `}
+        />
       </div>
-      <button
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-        className={`transform transition-transform duration-300 flex justify-center items-center p-2 text-lg font-medium w-full backdrop-brightness-50`}
-      > <p className="mr-5 text-lg">{isOpen ? "Learn less" : "Learn more"}</p>
-        {title}
+
+      {/* Toggle button */}
+      <motion.button
+        layout
+        onClick={toggle}
+        className={`w-full py-3 flex justify-center items-center hover:bg-white bg-green-100 transition rounded-b-xl ${buttonBg}`}
+      >
         <ChevronDown
-          className={`transform transition-transform ${isOpen ? "rotate-180" : "rotate-0"}`}
+          className={`transform transition-transform duration-300 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
           size={40}
         />
-      </button>
+      </motion.button>
     </div>
   );
 }

@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      gridTemplateRows: {
+        "0fr": "0fr",
+        "1fr": "1fr",
+      },
       colors: {
         black: {
           DEFAULT: '#000',
