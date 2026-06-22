@@ -44,11 +44,7 @@ const Widgets = () => {
       </Project>
       <FadeInSection className="h-2 bg-white w-1/2 mx-auto rounded-2xl fade-delay m-10"></FadeInSection>
 
-      <FadeInSection className="fade-delay">
-        <h1 className="text-3xl font-bold">other stuff i've done</h1>
-      </FadeInSection>
-
-      <ExpandableReverse>
+      <ExpandableReverse title="other stuff i've done">
         <div className="flex flex-col justify-center gap-12 projects-widget">
           <div className="rounded-2xl p-6 flex flex-col  bg-orange-200 gap-12 move-on-hover h-full">
             <div className="flex flex-row gap-5 w-full">

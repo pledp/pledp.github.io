@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import "highlight.js/styles/github-dark.css";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -9,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'L-E. J. "pled" T',
+  title: 'pled',
   description: "just a simple portfolio",
 };
 
