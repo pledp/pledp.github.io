@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -41,11 +42,15 @@ const PostList = ({ posts, currentSlug }) => (
   </ul>
 );
 
-export default function BlogSidebar({ posts, currentSlug }) {
+export default function BlogSidebar({ posts }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const currentSlug = pathname?.startsWith("/blog/")
+    ? pathname.split("/").pop()
+    : null;
 
   return (
-    <aside className="w-full lg:w-1/4 lg:sticky lg:top-8 text-white flex flex-col gap-8">
+    <aside className="w-full lg:w-1/4 lg:mt-32 lg:sticky lg:top-40 text-white flex flex-col gap-8">
       <Link
         href="/"
         className="font-bold text-xl leading-none hover:text-orange-200"

@@ -3,7 +3,7 @@ import StaggeredGrid from './dot-grid-component';
 
 const Hero = () => {
     return (
-        <section className='main-widget bg-black-100 w-full flex items-center justify-center lg:w-3/5 lg:justify-end lg:h-screen lg:sticky lg:top-0'>
+        <section className='main-widget bg-black-100 w-full flex items-center justify-center'>
             <StaggeredGrid className="absolute top-50 left-50 max-w-full overflow-hidden
             xl:overflow-visible"/>
 

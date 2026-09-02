@@ -1,17 +1,71 @@
 
 import React from "react";
 import Image from "next/image";
+import hljs from "highlight.js/lib/core";
+import rust from "highlight.js/lib/languages/rust";
 import FadeInSection from "./scroll-effect-component";
 import Project from "./project-component";
 import Expandable from "./expandable-component";
 import LightBox from "./lightbox";
 import ExpandableReverse from "./expandable-component-top";
 
+hljs.registerLanguage("rust", rust);
+
+const eradicSnippet = `use tokio::net::TcpListener;
+use eradic::ul::event::{ServiceProviderToServiceUser, ServiceUserToServiceProvider};
+use eradic_ul_tokio::{HandleClientError, acceptor_handle_client};
+
+let server = TcpListener::bind("127.0.0.1:104").await?;
+
+// Listen for incoming connections...
+let (tcp, socket_addr) = server.accept().await?;
+
+// Let the service take care of the incoming connection.
+let mut handle = acceptor_handle_client(tcp, socket_addr)?;
+
+// The handle contains two channels:
+// 1. For Service to User communication
+// 2. For User to Service communication
+
+// Handle and send events anywhere!
+while let Some(indication) = handle.scp_to_scu_rx.recv().await {
+  match indication {
+    ServiceProviderToServiceUser::AssociateIndicationPrimitive(indication) => {
+
+      // ...Do some stuff...
+
+      // Send an accepted Association response!
+      handle.scu_to_scp_tx.send(
+        ServiceUserToServiceProvider::AssociateResponsePrimitive(
+          AssociateResponsePrimitive {
+              context_name: indication.context_name,
+              called_ae: indication.called_ae,
+              calling_ae: indication.calling_ae,
+              user_information: indication.user_information,
+              presentation_context_definition_list_result,
+              diagnostic: ServiceUserReason::NoReason,
+              result: AssociationResult::Accepted,
+          })
+        )
+      ).await;
+
+      // This User to Service channel may be copied anywhere.
+      // Events don't NEED to be sent in response to a UL service event.
+    }
+
+    // ...Other events...
+
+  }
+}
+`;
+
+const eradicSnippetHtml = hljs.highlight(eradicSnippet, {
+  language: "rust",
+}).value;
+
 const Widgets = () => {
   return (
     <section className="text-white flex flex-col justify-center gap-12 mt-10 projects-widget w-full">
-
-        <FadeInSection className="h-2 bg-white w-1/2 mx-auto rounded-2xl fade-delay m-10"></FadeInSection>
 
         <FadeInSection>
           <h1 className="text-3xl font-bold">
@@ -20,28 +74,48 @@ const Widgets = () => {
           </h1>
         </FadeInSection>
 
-        <Project className="bg-orange-200 h-96 rounded-2xl mt-5 p-6 flex flex-col gap-16 pattern-doodle move-on-hover">
-          <div className="items-end text-right flex flex-col gap-5">
-            <h1 className="font-bold text-6xl">mögl</h1>
-            <p>a work-in-progress game framework/engine.</p>
-          </div>
-          <div className="items-end mt-auto">
+        <div className="bg-neutral-900 rounded-2xl p-6 flex flex-col text-white gap-12 move-on-hover h-full">
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-row items-center">
+              <h1 className="font-bold text-6xl">eradic</h1>
+              <a className="w-14 ml-auto" href="https://github.com/pledp/eradic">
+                <Image
+                  className="transition-transform duration-300 ease-in-out hover:scale-110"
+                  src="/images/github-logo-white.svg"
+                  width="50"
+                  height="50"
+                  alt="Github logo"
+                ></Image>
+              </a>
+            </div>
             <p>
-              written in <span className="font-bold">Rust</span> with winit and
-              wgpu. written mostly as a Rust-learning-project. trying to implement
-              cool modular features in a simple fashion.
+              A DICOM PS3.8 implementation written in Rust
             </p>
           </div>
-          <a href="https://github.com/pledp/moegl">
-            <Image
-              className="transition-transform duration-300 ease-in-out hover:scale-110"
-              src="/images/github-logo-white.svg"
-              width="50"
-              height="50"
-              alt="Github logo"
-            ></Image>
-          </a>
-      </Project>
+          <p>
+          Eradic offers a simple, zero bloat asyncronous DICOM Upper Layer Service implementation along with communication
+          using <span className="text-orange-200 font-bold">Tokio channels</span>. You and the service both emit events to eachother!
+          </p>
+
+          <div className="rounded-xl overflow-hidden border border-neutral-800 bg-neutral-950 shadow-lg">
+            <pre className="p-5 overflow-x-auto text-sm leading-relaxed">
+              <code
+                className="hljs bg-transparent p-0 font-mono"
+                dangerouslySetInnerHTML={{ __html: eradicSnippetHtml }}
+              />
+            </pre>
+          </div>
+
+          <p>
+          Don't like Tokio channels? Eradic provides powerful tools to develop custom Upper Layer Service implementations. Eradic provides
+          the data and the logic, <span className="text-orange-200 font-bold">you glue it all together</span>!
+          </p>
+          <p>
+          DICOM is a technical standard used in medical imaging for compatibility with different vendors. Part PS3.8 of the standard specifies the
+          networking services and protocol (Upper Layer) used in DICOM compliant devices. The library is designed to provide codepaths for the most common use cases.
+          Implementors should be aware of how the system should be designed to be DICOM compliant.
+          </p>
+        </div>
       <FadeInSection className="h-2 bg-white w-1/2 mx-auto rounded-2xl fade-delay m-10"></FadeInSection>
 
       <ExpandableReverse title="other stuff i've done">
